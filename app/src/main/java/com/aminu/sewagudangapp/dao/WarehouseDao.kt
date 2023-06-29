@@ -5,21 +5,21 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.aminu.sewagudangapp.model.Gudang
+import com.aminu.sewagudangapp.model.Warehouse
 import kotlinx.coroutines.flow.Flow
 
 
 @Dao
-interface GudangDao {
+interface WarehouseDao {
     @Query("SELECT * FROM `gudang_table` ORDER BY name ASC")
-    fun getAllGudang(): Flow<List<Gudang>>
+    fun getAllGudang(): Flow<List<Warehouse>>
 
     @Insert
-    suspend fun insertGudang(gudang: Gudang)
+    suspend fun insertGudang(warehouse: Warehouse)
 
     @Delete
-    suspend fun deleteGudang(gudang: Gudang)
+    suspend fun deleteGudang(warehouse: Warehouse)
 
-    @Update fun updateGudang(gudang: Gudang)
+    @Update fun updateGudang(warehouse: Warehouse)
 
 }
