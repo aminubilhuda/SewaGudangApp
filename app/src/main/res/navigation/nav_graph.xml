@@ -26,6 +26,7 @@
             app:destination="@id/FirstFragment" />
         <argument
             android:name="warehouse"
-            app:argType="com.aminu.sewagudangapp.model.Warehouse" />
+            app:argType="com.aminu.sewagudangapp.model.Warehouse"
+            app:nullable="true"/>
     </fragment>
 </navigation>

@@ -43,10 +43,14 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val  adapter = WarehouseListAdapter { tire ->
-            val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(tire)
+
+        val  adapter = WarehouseListAdapter { warehouse ->
+//            ini list yang bisa di klik jadi data warehouse tidak null
+            val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(warehouse)
             findNavController().navigate(action)
         }
+
+
         binding.dataRecycleView.adapter = adapter
         binding.dataRecycleView.layoutManager = LinearLayoutManager(context)
         warehouseViewModel.allWarehouse.observe(viewLifecycleOwner) {warehouses ->
@@ -63,7 +67,9 @@ class FirstFragment : Fragment() {
         }
 
         binding.addFAB.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            // ini button tambah jadi warehouse pasti null
+            val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(null)
+            findNavController().navigate(action)
         }
     }
 

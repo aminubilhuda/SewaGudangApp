@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.aminu.sewagudangapp.R
 import com.aminu.sewagudangapp.application.WarehouseApp
 import com.aminu.sewagudangapp.databinding.FragmentSecondBinding
@@ -24,6 +25,8 @@ class SecondFragment : Fragment() {
     private val warehouseViewModel: WarehouseViewModel by viewModels {
         WarehouseViewModelFactory((applicationContext as WarehouseApp).repository)
     }
+    private val args : SecondFragmentArgs by navArgs()
+    private var warehouse: Warehouse? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -43,6 +46,14 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        warehouse = args.warehouse
+        // kita cek jika warehouse null maka tampil default nambah gudang
+        // jika warehouse tidak null tampil sedikit berubah ada tombol hapus
+
+        if (warehouse != null) {
+            binding.hapusButton.visibility = View.VISIBLE
+            binding.saveButton.text = "Ubah"
+        }
         val name = binding.nameEditText.text
         val address = binding.addressEditText.text
         val owner = binding.ownerEditText.text
@@ -52,9 +63,10 @@ class SecondFragment : Fragment() {
             findNavController().popBackStack() //untuk dismiss halaman ini
         }
 
-//        binding.buttonSecond.setOnClickListener {
-//            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-//        }
+        binding.hapusButton.setOnClickListener {
+            warehouse?.let { warehouseViewModel.delete(it) }
+            findNavController().popBackStack()
+        }
     }
 
     override fun onDestroyView() {
