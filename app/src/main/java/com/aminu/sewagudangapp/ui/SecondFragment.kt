@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -53,14 +54,28 @@ class SecondFragment : Fragment() {
         if (warehouse != null) {
             binding.hapusButton.visibility = View.VISIBLE
             binding.saveButton.text = "Ubah"
+            binding.nameEditText.setText(warehouse?.name)
+            binding.addressEditText.setText(warehouse?.address)
+            binding.ownerEditText.setText(warehouse?.owner)
         }
         val name = binding.nameEditText.text
         val address = binding.addressEditText.text
         val owner = binding.ownerEditText.text
         binding.saveButton.setOnClickListener {
-            val warehouse = Warehouse(0, name.toString(), address.toString(), owner.toString())
-            warehouseViewModel.insert(warehouse)
-            findNavController().popBackStack() //untuk dismiss halaman ini
+            // kita kondisikan jika tidak di isi maka tidak bisa menyimpan
+            if (name.isEmpty() || address.isEmpty() || owner.isEmpty()) {
+                Toast.makeText(context, "Nama gudang tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            } else {
+                if (warehouse == null) {
+                    val warehouse = Warehouse(0, name.toString(), address.toString(), owner.toString())
+                    warehouseViewModel.insert(warehouse)
+                } else {
+                    val warehouse = Warehouse(warehouse?.id!!, name.toString(), address.toString(), owner.toString())
+                    warehouseViewModel.update(warehouse)
+                }
+                findNavController().popBackStack() //untuk dismiss halaman ini
+            }
+
         }
 
         binding.hapusButton.setOnClickListener {
