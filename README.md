@@ -5,12 +5,12 @@
 
  <img src="https://github.com/aminubilhuda/SewaGudangApp/blob/main/halaman%201.jpg" width="300" height="600" /> <br>
 
-INSERT
+INSERT<br>
  <img src="https://github.com/aminubilhuda/SewaGudangApp/blob/main/insert.jpg" width="300" height="600" /> <br>
-READ
+READ<br>
  <img src="https://github.com/aminubilhuda/SewaGudangApp/blob/main/read.jpg" width="300" height="600" /> <br>
-UPDATE
+UPDATE<br>
  <img src="https://github.com/aminubilhuda/SewaGudangApp/blob/main/update.jpg" width="300" height="600" /> <br>
-DELETE
+DELETE<br>
  <img src="https://github.com/aminubilhuda/SewaGudangApp/blob/main/delete.jpg" width="300" height="600" /> <br>
 
