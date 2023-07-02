@@ -5,18 +5,18 @@ import com.aminu.sewagudangapp.model.Warehouse
 import kotlinx.coroutines.flow.Flow
 
 class WarehouseRepository(private val gudnagDao: WarehouseDao) {
-    val allGudangs: Flow<List<Warehouse>> = gudnagDao.getAllGudang()
+    val allWarehouses: Flow<List<Warehouse>> = gudnagDao.getAllWarehouse()
 
-    suspend fun insertGudang(warehouse: Warehouse){
-        gudnagDao.insertGudang(warehouse)
+    suspend fun insertWarehouse(warehouse: Warehouse){
+        gudnagDao.insertWarehouse(warehouse)
     }
 
-    suspend fun deleteGudang(warehouse: Warehouse){
-        gudnagDao.deleteGudang(warehouse)
+    suspend fun deleteWarehouse(warehouse: Warehouse){
+        gudnagDao.deleteWarehouse(warehouse)
     }
 
-    suspend fun updateGudang(warehouse: Warehouse){
-        gudnagDao.updateGudang(warehouse)
+    suspend fun updateWarehouse(warehouse: Warehouse){
+        gudnagDao.updateWarehouse(warehouse)
     }
 
 

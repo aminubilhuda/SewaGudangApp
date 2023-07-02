@@ -11,15 +11,15 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface WarehouseDao {
-    @Query("SELECT * FROM `gudang_table` ORDER BY name ASC")
-    fun getAllGudang(): Flow<List<Warehouse>>
+    @Query("SELECT * FROM warehouse_table ORDER BY name ASC")
+    fun getAllWarehouse(): Flow<List<Warehouse>>
 
     @Insert
-    suspend fun insertGudang(warehouse: Warehouse)
+    suspend fun insertWarehouse(warehouse: Warehouse)
 
     @Delete
-    suspend fun deleteGudang(warehouse: Warehouse)
+    suspend fun deleteWarehouse(warehouse: Warehouse)
 
-    @Update fun updateGudang(warehouse: Warehouse)
+    @Update fun updateWarehouse(warehouse: Warehouse)
 
 }

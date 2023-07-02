@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    tools:context=".ui.FirstFragment">
 
 
     <ImageView
@@ -18,10 +18,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dataRecycleView"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="1dp" />
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/illustrationImageView"
+        app:layout_constraintEnd_toEndOf="@+id/illustrationImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.516" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addFAB"
@@ -37,14 +41,14 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:text="SewaGudang Tidak Ditemukan"
         android:textSize="26dp"
         app:layout_constraintEnd_toEndOf="@+id/illustrationImageView"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="@+id/illustrationImageView"
         app:layout_constraintTop_toBottomOf="@+id/illustrationImageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
