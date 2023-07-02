@@ -43,11 +43,21 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val  adapter = WarehouseListAdapter {}
+        val  adapter = WarehouseListAdapter { tire ->
+            val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(tire)
+            findNavController().navigate(action)
+        }
         binding.dataRecycleView.adapter = adapter
         binding.dataRecycleView.layoutManager = LinearLayoutManager(context)
         warehouseViewModel.allWarehouse.observe(viewLifecycleOwner) {warehouses ->
             warehouses.let {
+                if (warehouses.isEmpty()) {
+                    binding.emptyTextView.visibility = View.VISIBLE
+                    binding.illustrationImageView.visibility = View.VISIBLE
+                }else {
+                    binding.emptyTextView.visibility = View.GONE
+                    binding.illustrationImageView.visibility = View.GONE
+                }
                 adapter.submitList(warehouses)
             }
         }
