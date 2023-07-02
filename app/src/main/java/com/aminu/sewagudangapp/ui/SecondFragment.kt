@@ -63,8 +63,12 @@ class SecondFragment : Fragment() {
         val owner = binding.ownerEditText.text
         binding.saveButton.setOnClickListener {
             // kita kondisikan jika tidak di isi maka tidak bisa menyimpan
-            if (name.isEmpty() || address.isEmpty() || owner.isEmpty()) {
+            if (name.isEmpty()) {
                 Toast.makeText(context, "Nama gudang tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            } else if (address.isEmpty()) {
+                Toast.makeText(context, "Alamat gudang tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            } else if (owner.isEmpty()) {
+                Toast.makeText(context, "Pemilik gudang tidak boleh kosong", Toast.LENGTH_SHORT).show()
             } else {
                 if (warehouse == null) {
                     val warehouse = Warehouse(0, name.toString(), address.toString(), owner.toString())
