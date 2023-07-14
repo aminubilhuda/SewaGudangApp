@@ -97,10 +97,10 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
                 Toast.makeText(context, "Pemilik gudang tidak boleh kosong", Toast.LENGTH_SHORT).show()
             } else {
                 if (warehouse == null) {
-                    val warehouse = Warehouse(0, name.toString(), address.toString(), owner.toString())
+                    val warehouse = Warehouse(0, name.toString(), address.toString(), owner.toString(), currentLatLang?.latitude, currentLatLang?.longitude)
                     warehouseViewModel.insert(warehouse)
                 } else {
-                    val warehouse = Warehouse(warehouse?.id!!, name.toString(), address.toString(), owner.toString())
+                    val warehouse = Warehouse(warehouse?.id!!, name.toString(), address.toString(), owner.toString(), currentLatLang?.latitude, currentLatLang?.longitude)
                     warehouseViewModel.update(warehouse)
                 }
                 findNavController().popBackStack() //untuk dismiss halaman ini
@@ -169,7 +169,13 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
                     var latLang = LatLng(location.latitude, location.longitude)
                     currentLatLang = latLang
                     var title = "Marker"
+                    // menampilkan lokasi ssesuai koordinat yang sudah disumpan atau diupdate
 
+                    if (warehouse != null) {
+                        title = warehouse?.name.toString()
+                        val newCurrentLocation = LatLng(warehouse?.latitude!!, warehouse?.longitude!!)
+                        latLang = newCurrentLocation
+                    }
                     val markerOption = MarkerOptions()
                         .position(latLang)
                         .title(title)
