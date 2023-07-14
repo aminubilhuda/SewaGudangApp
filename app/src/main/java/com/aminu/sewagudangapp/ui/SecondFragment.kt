@@ -125,14 +125,7 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
 
         val uiSettings = mMap.uiSettings
         uiSettings.isZoomControlsEnabled = true
-        val sydney = LatLng(-34.0, 151.0)
-        val markerOption = MarkerOptions()
-            .position(sydney)
-            .title("Test")
-            .draggable(true)
-            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_warehouse_pin))
-        mMap.addMarker(markerOption)
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15f))
+//        val sydney = LatLng(-34.0, 151.0)
         mMap.setOnMarkerDragListener(this)
     }
 
@@ -177,6 +170,13 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
                     currentLatLang = latLang
                     var title = "Marker"
 
+                    val markerOption = MarkerOptions()
+                        .position(latLang)
+                        .title(title)
+                        .draggable(true)
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_warehouse_pin))
+                    mMap.addMarker(markerOption)
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLang, 15f))
                 }
             }
     }
