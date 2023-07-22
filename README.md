@@ -19,6 +19,4 @@ DELETE<br>
  
  <img src="https://github.com/aminubilhuda/SewaGudangApp/blob/main/Screenshot_20230721_231423_Sewa%20Gudang%20App.jpg" width="300" height="600" /> <br>
 
-  <img src="." width="300" height="600" /> <br>
-
-   <img src="......." width="300" height="600" /> <br>
+  <img src="https://github.com/aminubilhuda/SewaGudangApp/blob/main/Screenshot_20230721_233331_Sewa%20Gudang%20App.jpg" width="300" height="600" /> <br>
