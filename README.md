@@ -1,5 +1,5 @@
 # SewaGudangApp
- Tugas Kuliah Part 2
+UAS Pemrograman Mobile
 
  Halaman Utama Menampilkan rpty state saat data kosong
 
